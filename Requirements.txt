@@ -6,3 +6,4 @@ tensorflow
 opencv-python-headless
 pytesseract
 numpy
+gdown
