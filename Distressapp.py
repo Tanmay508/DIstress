@@ -12,9 +12,28 @@ from email.mime.text import MIMEText
 from threading import Thread
 import streamlit as st
 import os
+import gdown
 
-# Load your model
-loaded_model = tf.keras.models.load_model('road_distress_model.h5')
+def download_model_from_drive(file_id, destination):
+    """
+    Download the model file from Google Drive.
+    """
+    url = f'https://drive.google.com/uc?id={file_id}'
+    gdown.download(url, destination, quiet=False)
+
+# Google Drive File ID of your model
+FILE_ID = '1bWRIvND5w7tYKpiKF9XSJtvq8q9mW119'  # Replace with your actual Google Drive file ID
+MODEL_PATH = 'road_distress_model.h5'
+
+# Check if the model is already downloaded
+if not os.path.exists(MODEL_PATH):
+    print("Downloading the model from Google Drive...")
+    download_model_from_drive(FILE_ID, MODEL_PATH)
+else:
+    print("Model already exists locally.")
+
+# Load the model
+loaded_model = tf.keras.models.load_model(MODEL_PATH)
 
 # Define categories (replace with your actual distress types)
 categories = ['Longitudinal crack', 'Pothole', 'Oblique crack', 'Repair', 'Alligator crack', 'Block crack', 'Transverse crack', 'Edge Break']
