@@ -1,0 +1,8 @@
+streamlit
+altair
+pandas
+openpyxl
+tensorflow
+opencv-python-headless
+pytesseract
+numpy
