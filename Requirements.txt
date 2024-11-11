@@ -7,4 +7,4 @@ opencv-python-headless
 pytesseract
 numpy
 gdown
-opencv
+opencv-python-headless
